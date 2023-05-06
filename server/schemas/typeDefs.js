@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-express')
 
-// check Auth token?
 // saveBook input type to handle all the params?
 
 const typeDefs = gql`
@@ -9,20 +8,20 @@ type User {
     username: String!
     email: String!
     bookCount: Int
-    savedBooks [Book]
+    savedBooks: [Book]
 }
 
 type Book {
     bookId: ID!
     authors: [String]
-    description: String!
-    title: String!
+    description: String
+    title: String
     image: String
     link: String
 }
 
 type Auth {
-    token: String!
+    token: ID!
     user: User
 }
 
