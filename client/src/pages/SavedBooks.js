@@ -17,8 +17,8 @@ import { removeBookId } from '../utils/localStorage';
 const SavedBooks = () => {
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
-
   const { loading, userData } = useQuery(GET_ME)
+  const [removeBook, { error, data }] = useMutation(REMOVE_BOOK)
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -29,17 +29,16 @@ const SavedBooks = () => {
     }
 
     try {
-      // const response = await deleteBook(bookId, token); //remove 
-      const [removeBook, { error, data }] = useMutation(REMOVE_BOOK)
+      // const response = await deleteBook(bookId, token); //remove  
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!response.ok) { //remove?
+      //   throw new Error('something went wrong!');
+      // }
 
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
+      // const updatedUser = await response.json();
+      // setUserData(updatedUser); //remove?
       // upon success, remove book's id from localStorage
-      removeBookId(bookId);
+      removeBookId(data.removeBook.bookId);
     } catch (err) {
       console.error(err);
     }
