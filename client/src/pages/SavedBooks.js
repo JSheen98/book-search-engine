@@ -29,10 +29,12 @@ const SavedBooks = () => {
     }
 
     try {
+      // call removeBook mutation, and we remove the book with the given id
       const { data } = await removeBook({
         variables: { bookId }
       })
 
+      // call remove book id
       removeBookId(bookId);
     } catch (err) {
       console.error(err);

@@ -29,10 +29,12 @@ const SignupForm = () => {
     }
 
     try {
+      // call our addUser mutation and use the given formData to create
       const { data } = await addUser({
         variables: { ...userFormData }
       })
 
+      // login with the new token attached
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);

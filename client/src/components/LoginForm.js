@@ -27,10 +27,12 @@ const LoginForm = () => {
     }
 
     try {
+      // call our login mutation, use the given form data to auth
       const { data } = await login({
         variables: { ...userFormData }
       })
 
+      // login with the token attached
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);

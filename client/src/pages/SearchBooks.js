@@ -10,7 +10,7 @@ import {
   Row
 } from 'react-bootstrap';
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -74,6 +74,7 @@ const SearchBooks = () => {
     }
 
     try {
+      // call our saveBook mutation and input bookToSave to our db
       const { data } = await saveBook({
         variables: { input: { ...bookToSave } },
       })

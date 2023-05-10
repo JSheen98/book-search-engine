@@ -5,7 +5,6 @@ const { authMiddleware } = require('./utils/auth') //added
 
 const { typeDefs, resolvers } = require('./schemas') //added
 const db = require('./config/connection');
-// const routes = require('./routes'); // remove later
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,8 +25,6 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => { //added
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
-// app.use(routes); // remove later
 
 const startApolloServer = async () => { //added
   await server.start() //added
