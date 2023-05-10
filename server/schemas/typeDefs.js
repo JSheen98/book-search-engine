@@ -1,7 +1,5 @@
 const { gql } = require('apollo-server-express')
 
-// saveBook input type to handle all the params?
-
 const typeDefs = gql`
 type User {
     _id: ID!
