@@ -33,12 +33,6 @@ const SignupForm = () => {
         variables: { ...userFormData }
       })
 
-      // if (!response.ok) { //remove?
-      //   throw new Error('something went wrong!');
-      // }
-
-      // const { token, user } = await response.json(); //remove?
-      // console.log(user); //remove ?
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);

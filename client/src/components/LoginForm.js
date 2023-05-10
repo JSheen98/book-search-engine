@@ -7,9 +7,9 @@ import Auth from '../utils/auth';
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated] = useState(false); // remove?
-  const [showAlert, setShowAlert] = useState(false); // remove?
-  const [login, { error, data }] = useMutation(LOGIN_USER)
+  const [validated] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
+  const [login, { error }] = useMutation(LOGIN_USER)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,12 +31,6 @@ const LoginForm = () => {
         variables: { ...userFormData }
       })
 
-      // if (!response.ok) { //remove?
-      //   throw new Error('something went wrong!');
-      // }
-
-      // const { token, user } = await response.json(); //remove?
-      // console.log(user);
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
